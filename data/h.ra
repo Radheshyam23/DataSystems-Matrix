@@ -1,0 +1,9 @@
+LOAD Student
+LOAD Marks
+TEMP <- SELECT Advisor_id == 2 FROM Student 
+TEMP2 <- CROSS TEMP Marks
+TEMP3 <- SELECT TEMP_Stud_Id == Marks_Stud_Id FROM TEMP2
+TEMP4 <- SELECT Maths_marks > 90 FROM TEMP3
+ANS <- PROJECT TEMP_Stud_Id FROM TEMP4
+RENAME TEMP_Stud_Id TO Stud_Id FROM ANS
+PRINT ANS

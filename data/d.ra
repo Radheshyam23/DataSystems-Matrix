@@ -1,0 +1,13 @@
+LOAD Student
+LOAD Marks
+
+td1_1 <- SELECT Stud_age >= 16 FROM Student
+td1_2 <- SELECT Stud_age <= 18 FROM td1_1
+td2_1 <- SELECT Maths_marks >= 70 FROM Marks
+td2_2 <- SELECT Physics_marks > 60 FROM td2_1
+tdCross <- CROSS td1_2 td2_2
+ansD2 <- SELECT td1_2_Stud_Id == td2_2_Stud_Id FROM tdCross
+ansD2_1 <- PROJECT td1_2_Stud_Id,Maths_marks,Physics_marks,Stud_age FROM ansD2
+RENAME td1_2_Stud_Id TO stud_id FROM ansD2_1
+
+PRINT ansD2_1

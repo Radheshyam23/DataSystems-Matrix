@@ -1,0 +1,5 @@
+LOAD Student
+TEMP <- SELECT Stud_sex == 1 FROM Student
+TEMP2 <- SELECT Stud_age > 16 FROM TEMP
+ANS <- PROJECT Stud_Id,Stud_age FROM TEMP2
+PRINT ANS
